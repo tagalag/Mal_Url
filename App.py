@@ -11,7 +11,7 @@ data = pd.read_csv('data.csv')
 # Encode the label ('good', 'bad') as integers
 data['label'] = data['label'].map({'good': 1, 'bad': 0})
 
-# Extract features from URLs (you might use other methods for feature extraction as well)
+# Extract features from URLs to create a feature matrix
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(data['url'])
 
@@ -19,7 +19,7 @@ X = vectorizer.fit_transform(data['url'])
 y = data['label']
 
 # Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.01, random_state=1)
 
 # Note: Scaling is generally not necessary for CountVectorizer output and can be omitted here
 
